@@ -2,6 +2,10 @@
 
 This repository represents a mean project scaffold.
 
+## Prequisites
+
+First install mongodb. Once install execute the following command `npm install && bower install`
+
 ## Usage
 
 Development is divided in two areas:
@@ -22,4 +26,6 @@ In order to run the application there are two important commands:
 - grunt server
 
    Runs the development environment
+   
+   
 
