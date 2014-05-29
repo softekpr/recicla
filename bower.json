@@ -1,0 +1,23 @@
+{
+  "name": "Mean Scaffold",
+  "version": "0.0.1",
+  "authors": [
+    "Angel Villalain <angel.villalain@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.13",
+    "angular-route": "~1.2.13",
+    "angular-resource": "~1.2.13",
+    "angular-mocks": "~1.2.13",
+    "angular-animate": "~1.2.13",
+    "angular-bootstrap": "~0.10.0",
+    "Font-Awesome": "~4.0.3",
+    "bootstrap": "~3.1.1"
+  },
+  "devDependencies": {
+    "jasmine-given": "~2.6.1",
+    "jasmine-stealth": "~0.0.15"
+  }
+}
