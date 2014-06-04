@@ -50,10 +50,10 @@
 
                 },
                 center: {
-                    latitude: 0,
-                    longitude: 0
+                    latitude: 18.2591478,
+                    longitude: -66.4380706
                 },
-                zoom: 4,
+                zoom: 10,
                 events: {
                     /*jshint camelcase: false */
                     bounds_changed: function () {
