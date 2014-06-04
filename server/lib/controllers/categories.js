@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var Category = require('../models/category.js');
+    var Category = require('../models/category');
 
     var CategoryController = function(){};
 

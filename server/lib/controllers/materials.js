@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var Material = require('../models/material.js');
+    var Material = require('../models/material');
 
     var MaterialController = function(){};
 
