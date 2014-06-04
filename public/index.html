@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Find the Dude!</title>
+        <title>RECICLA</title>
         <!-- build:css(public) style/vendor.css -->
         <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
         <link href="vendor/Font-Awesome/css/font-awesome.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
         <!-- mobile menu -->
         <ul class="nav nav-pills hidden-md hidden-lg">
-            <li class="pull-right">
+            <li class="pull-right" ng-click="openMenu()">
                 <a href="#"><i class="fa fa-2x fa-bars"></i></a>
             </li>
             <li class="ubuntu-font" style="margin-left: 0.5em; margin-top: 0.1em; font-size: 30px">
@@ -49,6 +49,7 @@
 
         <!-- build:js(public) scripts/app.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/directives/categories.js"></script>
         <script src="scripts/home/controllers/home.js"></script>
         <!-- endbuild -->
     </body>
