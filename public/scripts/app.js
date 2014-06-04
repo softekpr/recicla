@@ -12,12 +12,19 @@
             });
         })
         .filter('tel', function () {
+            var format = function(phoneNumber) {
+                return '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3, 6) + '-' + phoneNumber.substring(6);
+            };
             return function (phoneNumber) {
                 if (!phoneNumber) {
                     return phoneNumber;
                 }
 
-                return formatLocal('US', phoneNumber);
+                if(phoneNumber.length >= 10) {
+                    return phoneNumber.substring(0,phoneNumber.length-10) + format(phoneNumber.substring(phoneNumber.length-10));
+                } else {
+                    return phoneNumber;
+                }
             };
         })
         .filter('split', function () {
