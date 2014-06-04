@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     var User = require('../models/user'),
@@ -7,18 +7,22 @@
     var UserController = function() {};
 
     UserController.prototype.getUsers = function(req, res) {
-        if(!req.body.box) {
+        if(!req.query.box) {
             res.send(400);
         }
 
-        Material.find().where('name').in(req.body.materials)
+        var materials = req.query.materials instanceof Array ? req.query.materials : [req.query.materials];
+
+        Material.find().where('name').in(materials)
             .exec(function (err, result) {
                 if (err) {
                     res.send(500, err);
                 } else {
+                    var box = [JSON.parse(req.query.box[0]), JSON.parse(req.query.box[1])];
+
                     var coordinates = [
-                        [req.body.box[0].lng, req.body.box[0].lat],
-                        [req.body.box[1].lng, req.body.box[1].lat]
+                        [box[0].lng, box[0].lat],
+                        [box[1].lng, box[1].lat]
                     ];
                     User.find({
                         coordinates: {$within: {$box: coordinates}},
@@ -32,6 +36,23 @@
                     });
                 }
 
+            });
+    };
+
+    UserController.prototype.saveUser = function (req, res) {
+        if (!req.body.materials || !req.body.userLocation) {
+            res.send(400, 'Bad request');
+        }
+        Material.find().where('name').in(req.body.materials)
+            .exec(function (err, result) {
+                new User({coordinates: req.body.userLocation, materials: result})
+                    .save(function (err) {
+                        if (err) {
+                            res.send(500, err);
+                        } else {
+                            res.send(200, 'Saved');
+                        }
+                    });
             });
     };
 

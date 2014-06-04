@@ -5,11 +5,12 @@ module.exports=
         expand: true
         dot: true
         dest: '<%=files.dist.dir%>/public'
-        cwd: '<%=files.public.dir%>/public'
+        cwd: '<%=files.public.dir%>/'
         src: [
           '*.{ico,png,txt}'
           'images/{,*/}*.{webp}'
           'fonts/**/*'
+          'style/font/*'
         ]
       }
       {

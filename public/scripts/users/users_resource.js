@@ -4,7 +4,8 @@
     angular.module('recicla')
         .factory('User', function ($resource) {
             return $resource('/api/users', {}, {
-                fetch: { method: 'POST', isArray: true }
+                fetch: { method: 'GET', isArray: true },
+                save: { method:'POST' }
             });
         });
 }());

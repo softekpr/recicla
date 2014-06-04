@@ -159,18 +159,23 @@
             }
 
             function refreshMapData(categories) {
-                fetchLocations(categories);
-                fetchHeatMapData(categories);
+                if($scope.map.heatMap.show) {
+                    fetchHeatMapData(categories);
+                } else {
+                    fetchLocations(categories);
+                }
             }
 
             $scope.$watch('categories', refreshMapData, true);
             $scope.$watch('map.heatMap.show', function (showHeatMap) {
+                refreshMapData($scope.categories);
                 angular.forEach($scope.markers, function (marker) {
                     marker.options.visible = !showHeatMap;
                 });
             });
             $scope.markers = [];
-            $scope.selectedMarkers = null;
+            $scope.selectedMarker = null;
+            $scope.showInfoPanel = false;
 
             var markerClick = function (marker) {
                 return function () {
@@ -190,6 +195,7 @@
                         selectedMarker = marker;
                         $scope.showRoute = true;
                         $scope.selectedMarker = angular.copy(marker);
+                        $scope.showInfoPanel = true;
                     });
                 }
             };
