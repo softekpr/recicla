@@ -9,6 +9,9 @@
     };
 
     LocationController.prototype.getLocations = function (req, res) {
+        if(!req.body.materials || !req.body.userLocation || !req.body.box) {
+            res.send(400, err);
+        }
         Material.find().where('name').in(req.body.materials)
             .exec(function (err, result) {
                 //var test = new User({coordinates: req.body.userLocation, materials: result});
