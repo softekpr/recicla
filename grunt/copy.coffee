@@ -10,6 +10,7 @@ module.exports=
           '*.{ico,png,txt}'
           'images/{,*/}*.{webp}'
           'fonts/**/*'
+          'style/font/**/*'
         ]
       }
       {
