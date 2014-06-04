@@ -3,12 +3,10 @@
 
     angular.module('recicla')
         .controller('HomeController', function ($scope, $rootScope, $window, $resource, $timeout, geolocation, filterFilter, Material, Location, User) {
+            var directionsDisplayOpts = {preserveViewport: true, draggable: true, suppressMarkers: true};
             var directionsService = new google.maps.DirectionsService();
-            var directionsDisplay = new google.maps.DirectionsRenderer({preserveViewport: true, draggable: true, suppressMarkers: true});
-            var loaded = false;
             var selectedMarker;
             var heatMapLayer;
-
 
             function fetchGeolocation() {
                 geolocation.getLocation({maximumAge: Infinity}).then(function (position) {
@@ -36,7 +34,7 @@
             var refreshPromise = null;
 
             $scope.initialLocation = null;
-
+            $scope.directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOpts);
             $scope.homeMarker = {
                 location: {
                     latitude: 0,
@@ -57,15 +55,6 @@
                 },
                 zoom: 4,
                 events: {
-                    tilesloaded: function (map) {
-                        $scope.$apply(function () {
-                            $scope.mapInstance = map;
-                        });
-                        if (!loaded) {
-                            directionsDisplay.setMap(map);
-                        }
-                        loaded = true;
-                    },
                     /*jshint camelcase: false */
                     bounds_changed: function () {
                         if (refreshPromise) {
@@ -104,7 +93,9 @@
             });
 
             function fetchLocations(categories) {
-                if (!$scope.map.control.getGMap() || !$scope.initialLocation) { return; }
+                if (!$scope.map.control.getGMap() || !$scope.initialLocation) {
+                    return;
+                }
                 var selectedCategories = filterFilter(categories, {selected: true});
                 if (selectedCategories.length === 0) {
                     $scope.markers = [];
@@ -160,7 +151,12 @@
             }
 
             function refreshMapData(categories) {
-                if($scope.map.heatMap.show) {
+                if($scope.directionsDisplay) {
+                    $scope.directionsDisplay.setMap(null);
+                    $scope.directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOpts);
+                    $scope.directionsDisplay.setMap($scope.map.control.getGMap());
+                }
+                if ($scope.map.heatMap.show) {
                     fetchHeatMapData(categories);
                 } else {
                     fetchLocations(categories);
@@ -173,6 +169,7 @@
                 angular.forEach($scope.markers, function (marker) {
                     marker.options.visible = !showHeatMap;
                 });
+                $scope.directionsDisplay.setMap(showHeatMap ? null : $scope.map.control.getGMap());
             });
             $scope.markers = [];
             $scope.selectedMarker = null;
@@ -188,7 +185,7 @@
                         };
                         directionsService.route(request, function (result, status) {
                             if (status === google.maps.DirectionsStatus.OK) {
-                                directionsDisplay.setDirections(result);
+                                $scope.directionsDisplay.setDirections(result);
                             } else {
                                 console.log('Error routing.');
                             }
