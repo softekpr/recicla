@@ -11,7 +11,7 @@
     LocationController.prototype.getLocations = function (req, res) {
         Material.find().where('name').in(req.body.materials)
             .exec(function (err, result) {
-                var test = new User({coordinates: req.body.userLocation, materials: result});
+                //var test = new User({coordinates: req.body.userLocation, materials: result});
 
                 new User({coordinates: req.body.userLocation, materials: result})
                     .save(function (err) {
