@@ -1,114 +1,114 @@
 [
     {
         "name": "Aluminio",
-        "cssClass": "fa fa-metal material-aluminum"
+        "cssClass": "fa-fw fa fa-metal material-aluminum"
     },
     {
         "name": "Plástico",
-        "cssClass": "fa fa-plastic material-plastic"
+        "cssClass": "fa-fw fa fa-plastic material-plastic"
     },
     {
         "name": "Cartón",
-        "cssClass": "fa fa-cubes material-cardboard"
+        "cssClass": "fa-fw fa fa-cubes material-cardboard"
     },
     {
         "name": "Papel",
-        "cssClass": "glyphicon glyphicon-file material-paper"
+        "cssClass": "fa-fw glyphicon glyphicon-file material-paper"
     },
     {
         "name": "Periódico",
-        "cssClass": "glyphicon glyphicon-list-alt material-default"
+        "cssClass": "fa-fw glyphicon glyphicon-list-alt material-default"
     },
     {
         "name": "Metales ferrosos",
-        "cssClass": "fa fa-metal material-ferrous"
+        "cssClass": "fa-fw fa fa-metal material-ferrous"
     },
     {
         "name": "Metales no ferrosos",
-        "cssClass": "fa fa-metal material-non-ferrous"
+        "cssClass": "fa-fw fa fa-metal material-non-ferrous"
     },
     {
         "name": "Vidrio",
-        "cssClass": "glyphicon glyphicon-glass material-glass"
+        "cssClass": "fa-fw glyphicon glyphicon-glass material-glass"
     },
     {
         "name": "Equipo Electrónico",
-        "cssClass": "glyphicon glyphicon-phone material-default"
+        "cssClass": "fa-fw glyphicon glyphicon-phone material-default"
     },
     {
         "name": "Neumáticos",
-        "cssClass": "fa fa-tire material-default"
+        "cssClass": "fa-fw fa fa-tire material-default"
     },
     {
         "name": "Residuos sólidos",
-        "cssClass": "fa fa-cubes material-solid-waste"
+        "cssClass": "fa-fw fa fa-cubes material-solid-waste"
     },
     {
         "name": "Paletas de madera",
-        "cssClass": "glyphicon glyphicon-align-justify material-wood"
+        "cssClass": "fa-fw glyphicon glyphicon-align-justify material-wood"
     },
     {
         "name": "Material vegetativo",
-        "cssClass": "glyphicon glyphicon-leaf material-vegetable"
+        "cssClass": "fa-fw glyphicon glyphicon-leaf material-vegetable"
     },
     {
         "name": "Asfalto",
-        "cssClass": "glyphicon glyphicon-road material-default"
+        "cssClass": "fa-fw glyphicon glyphicon-road material-default"
     },
     {
         "name": "Cartuchos de tinta",
-        "cssClass": "fa fa-print material-print-cartridge"
+        "cssClass": "fa-fw fa fa-print material-print-cartridge"
     },
     {
         "name": "Aceite de motor",
-        "cssClass": "glyphicon glyphicon-tint material-default"
+        "cssClass": "fa-fw glyphicon glyphicon-tint material-default"
     },
     {
         "name": "Bronce",
-        "cssClass": "fa fa-metal material-bronze"
+        "cssClass": "fa-fw fa fa-metal material-bronze"
     },
     {
         "name": "Cobre",
-        "cssClass": "fa fa-metal material-copper"
+        "cssClass": "fa-fw fa fa-metal material-copper"
     },
     {
         "name": "Acero Inoxidable",
-        "cssClass": "fa fa-metal material-steel"
+        "cssClass": "fa-fw fa fa-metal material-steel"
     },
     {
         "name": "Lámparas fluorescentes",
-        "cssClass": "fa fa-lightbulb-o material-default"
+        "cssClass": "fa-fw fa fa-lightbulb-o material-default"
     },
     {
         "name": "Equipo de comunicaciones",
-        "cssClass": "glyphicon glyphicon-phone material-default"
+        "cssClass": "fa-fw glyphicon glyphicon-phone material-default"
     },
     {
         "name": "Transformadores",
-        "cssClass": "fa fa-database material-default"
+        "cssClass": "fa-fw fa fa-database material-default"
     },
     {
         "name": "Capacitores",
-        "cssClass": "fa fa-capacitor material-default"
+        "cssClass": "fa-fw fa fa-capacitor material-default"
     },
     {
         "name": "Hormigón",
-        "cssClass": "fa fa-cubes material-hormigon"
+        "cssClass": "fa-fw fa fa-cubes material-hormigon"
     },
     {
         "name": "Biosólidos",
-        "cssClass": "glyphicon glyphicon-cloud material-biosolid"
+        "cssClass": "fa-fw glyphicon glyphicon-cloud material-biosolid"
     },
     {
         "name": "Baterías de auto",
-        "cssClass": "fa fa-battery-car material-default"
+        "cssClass": "fa-fw fa fa-battery-car material-default"
     },
     {
         "name": "Residuos industriales",
-        "cssClass": "fa fa-cubes material-industrial-waste"
+        "cssClass": "fa-fw fa fa-cubes material-industrial-waste"
     },
     {
         "name": "Aceite Vegetal",
-        "cssClass": "glyphicon glyphicon-tint material-vegetable-oil"
+        "cssClass": "fa-fw glyphicon glyphicon-tint material-vegetable-oil"
     }
 ]
