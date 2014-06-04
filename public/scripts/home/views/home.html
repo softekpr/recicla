@@ -40,11 +40,14 @@
             <layer data-namespace="visualization" data-type="HeatmapLayer" data-show="map.heatMap.show"
                    data-onCreated="map.heatMap.callback" data-options="map.heatMap.options"></layer>
         </div>
-        <div class="at-the-bottom" ng-show="selectedMarker">
+        <div class="at-the-bottom" ng-show="showInfoPanel">
             <div class="map-bottom-overlay div-center text-center">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="ubuntu-font">{{selectedMarker.location.name}}</h3>
+                        <h3 class="ubuntu-font">
+                            {{selectedMarker.location.name}}
+                            <small class="pull-right clickable" ng-click="showInfoPanel = false"><i class="fa fa-fw fa-times"></i></small>
+                        </h3>
                     </div>
                 </div>
                 <div class="row">

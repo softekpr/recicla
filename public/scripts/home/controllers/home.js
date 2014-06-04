@@ -170,7 +170,8 @@
                 });
             });
             $scope.markers = [];
-            $scope.selectedMarkers = null;
+            $scope.selectedMarker = null;
+            $scope.showInfoPanel = false;
 
             var markerClick = function (marker) {
                 return function () {
@@ -190,6 +191,7 @@
                         selectedMarker = marker;
                         $scope.showRoute = true;
                         $scope.selectedMarker = angular.copy(marker);
+                        $scope.showInfoPanel = true;
                     });
                 }
             };
