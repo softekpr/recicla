@@ -1,0 +1,26 @@
+[
+    {
+        "code": "CA",
+        "description": "Centro de acopio"
+    },
+    {
+        "code": "PC",
+        "description": "Planta de Composta"
+    },
+    {
+        "code": "CAM",
+        "description": "Centro de Acopio Municipal"
+    },
+    {
+        "code": "SRS",
+        "description": "Sistema de Relleno Sanitario"
+    },
+    {
+        "code": "MRF",
+        "description": "Recuperación de Materiales Reciclables"
+    },
+    {
+        "code": "CAT",
+        "description": "Centro de Acopio Temporal"
+    }
+]
