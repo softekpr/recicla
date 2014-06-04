@@ -10,7 +10,7 @@
 
     LocationController.prototype.getLocations = function (req, res) {
         if(!req.body.materials || !req.body.userLocation || !req.body.box) {
-            res.send(400, err);
+            res.send(400, "Bad request");
         }
         Material.find().where('name').in(req.body.materials)
             .exec(function (err, result) {
