@@ -1,9 +1,15 @@
 {
-  "name": "Mean-Scaffold",
-  "title": "Mean Scaffold Web Application",
+  "name": "recicla",
+  "title": "Recicla",
   "version": "0.1.0",
   "private": true,
   "author": "Angel L. Villalain <angel.villalain@gmail.com>",
+  "contributors": [
+      {"name": "Luis A Catoni", "email": "psychoff@gmail.com"},
+      {"name": "Jose M Hernandez-Lucena", "email": "jhlucena@gmail.com"},
+      {"name": "Juan Antonio Ramirez", "email": "tonior@gmail.com"},
+      {"name": "Victor Ramirez", "email": "victor.ramirez@gmail.com"}
+  ],
   "license": "MIT",
   "main": "server/server.js",
   "devDependencies": {
