@@ -20,7 +20,9 @@
     "globals": {
         "angular": false,
         "console": false,
-        "google": false
+        "google": false,
+        "_": false,
+        "formatLocal": false
     },
     "sub": true
 }

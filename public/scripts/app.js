@@ -13,17 +13,18 @@
         })
         .filter('tel', function () {
             return function (phoneNumber) {
-                if (!phoneNumber)
+                if (!phoneNumber) {
                     return phoneNumber;
+                }
 
                 return formatLocal('US', phoneNumber);
-            }
+            };
         })
         .filter('split', function () {
-            return function (string, char) {
+            return function (string, separator) {
                 string = string || '';
-                return string.split(char);
-            }
+                return string.split(separator);
+            };
         })
         .run(function ($rootScope, $aside) {
             $rootScope.mobileMenu = $aside({
@@ -46,7 +47,7 @@
                             text: ary.length,
                             index: Math.min(Math.floor(Math.log(ary.length) / LN3) + 1, num),
                             title: ary.length + ' localidades'
-                        }
+                        };
                     }
                 }
             };

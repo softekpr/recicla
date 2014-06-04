@@ -17,7 +17,7 @@
                                 return '<i class="' + material.cssClass + '"></i>';
                             }).join(''),
                             location: location
-                        }
+                        };
                     });
                 }}
             });

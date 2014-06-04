@@ -19,15 +19,15 @@
                     $scope.map.center.longitude = $scope.initialLocation.lng();
                     $scope.map.zoom = 14;
                 }, function (reason) {
-                    console.log("Geolocation failed: " + reason);
-                    console.log("Trying again...");
+                    console.log('Geolocation failed: ' + reason);
+                    console.log('Trying again...');
                     fetchGeolocation();
                 });
             }
 
             $scope.$on('error', function (event, desc) {
-                console.log("Geolocation failed: " + desc);
-                console.log("Trying again...");
+                console.log('Geolocation failed: ' + desc);
+                console.log('Trying again...');
                 fetchGeolocation();
             });
 
@@ -66,6 +66,7 @@
                         }
                         loaded = true;
                     },
+                    /*jshint camelcase: false */
                     bounds_changed: function () {
                         if (refreshPromise) {
                             $timeout.cancel(refreshPromise);
@@ -103,19 +104,19 @@
             });
 
             function fetchLocations(categories) {
-                if (!$scope.map.control.getGMap() || !$scope.initialLocation) return;
+                if (!$scope.map.control.getGMap() || !$scope.initialLocation) { return; }
                 var selectedCategories = filterFilter(categories, {selected: true});
                 if (selectedCategories.length === 0) {
                     $scope.markers = [];
                 } else {
                     var b = $scope.map.control.getGMap().getBounds();
                     var req = {
-                        "box": [
-                            {"lat": b.getSouthWest().lat(), "lng": b.getSouthWest().lng()},
-                            {"lat": b.getNorthEast().lat(), "lng": b.getNorthEast().lng()}
+                        'box': [
+                            {'lat': b.getSouthWest().lat(), 'lng': b.getSouthWest().lng()},
+                            {'lat': b.getNorthEast().lat(), 'lng': b.getNorthEast().lng()}
                         ],
-                        "userLocation": {"lat": $scope.initialLocation.lat(), "lng": $scope.initialLocation.lng()},
-                        "materials": selectedCategories.map(function (category) {
+                        'userLocation': {'lat': $scope.initialLocation.lat(), 'lng': $scope.initialLocation.lng()},
+                        'materials': selectedCategories.map(function (category) {
                             return category.name;
                         })
                     };
@@ -140,8 +141,8 @@
                 } else {
                     var b = $scope.map.control.getGMap().getBounds();
                     var bbox = [
-                        {"lat": b.getSouthWest().lat(), "lng": b.getSouthWest().lng()},
-                        {"lat": b.getNorthEast().lat(), "lng": b.getNorthEast().lng()}
+                        {'lat': b.getSouthWest().lat(), 'lng': b.getSouthWest().lng()},
+                        {'lat': b.getNorthEast().lat(), 'lng': b.getNorthEast().lng()}
                     ];
                     User.fetch({
                         box: bbox,
@@ -186,10 +187,10 @@
                             travelMode: google.maps.TravelMode.DRIVING
                         };
                         directionsService.route(request, function (result, status) {
-                            if (status == google.maps.DirectionsStatus.OK) {
+                            if (status === google.maps.DirectionsStatus.OK) {
                                 directionsDisplay.setDirections(result);
                             } else {
-                                console.log("Error routing.");
+                                console.log('Error routing.');
                             }
                         });
                         selectedMarker = marker;
@@ -197,7 +198,7 @@
                         $scope.selectedMarker = angular.copy(marker);
                         $scope.showInfoPanel = true;
                     });
-                }
+                };
             };
         })
         .config(function ($routeProvider) {
