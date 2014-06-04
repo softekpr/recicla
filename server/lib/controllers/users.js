@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var User = require('../models/user.js'),
+    var User = require('../models/user'),
         Material = require('../models/material');
 
     var UserController = function() {};
@@ -32,15 +32,6 @@
                     });
                 }
 
-            });
-    };
-
-    UserController.prototype.saveUser = function(req, res) {
-        new User(req.body)
-            .save(function (err) {
-                if (err) {
-                    res.send(500, err);
-                }
             });
     };
 
