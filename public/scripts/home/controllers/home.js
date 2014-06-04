@@ -159,12 +159,16 @@
             }
 
             function refreshMapData(categories) {
-                fetchLocations(categories);
-                fetchHeatMapData(categories);
+                if($scope.map.heatMap.show) {
+                    fetchHeatMapData(categories);
+                } else {
+                    fetchLocations(categories);
+                }
             }
 
             $scope.$watch('categories', refreshMapData, true);
             $scope.$watch('map.heatMap.show', function (showHeatMap) {
+                refreshMapData($scope.categories);
                 angular.forEach($scope.markers, function (marker) {
                     marker.options.visible = !showHeatMap;
                 });

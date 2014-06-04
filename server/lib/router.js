@@ -18,7 +18,9 @@
         // Get all locations
         app.post('/api/locations', locationController.getLocations );
 
-        app.post('/api/users', userController.getUsers );
+        app.get('/api/users', userController.getUsers );
+
+        app.post('/api/users', userController.saveUser );
     };
 
     module.exports = new Router();
