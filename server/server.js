@@ -8,6 +8,12 @@
         mongoose = require('mongoose'),
         configuration = require(path.join(__dirname, './lib/configuration'));
 
+    // Declare all the modules for Rest....
+    var categoryController = require('./lib/controllers/categories.js');
+    var materialController = require('./lib/controllers/materials.js');
+    var locationController = require('./lib/controllers/locations.js');
+    var userController = require('./lib/controllers/users.js');
+
     mongoose.connect(configuration.get('mongo:uri'));
 
     var modelsPath = path.join(__dirname, './lib/models');
@@ -29,7 +35,20 @@
     app.configure(function() {
         app.use(express.static(path.join(__dirname, '../build')));
         app.use(express.static(path.join(__dirname, '../public')));
+        app.use(express.bodyParser());
         logging(app);
+
+        // Get all categories
+        app.get('/api/categories', categoryController.getCategories );
+
+        // Get all materials
+        app.get('/api/materials', materialController.getMaterials );
+
+        // Get all locations
+        app.post('/api/locations', locationController.getLocations );
+
+        app.post('/api/users', userController.getUsers );
+
         app.get('*', function(request, response) {
             response.sendfile(path.join(__dirname, '../public/index.html'));
         });
