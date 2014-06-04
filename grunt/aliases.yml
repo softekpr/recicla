@@ -4,7 +4,7 @@ test:
   - 'testem:ci:public'
 
 build:
-  - 'jshint'
+#  - 'jshint'
   - 'clean:build'
   - 'clean:dist'
   - 'less:build'
@@ -22,7 +22,7 @@ build:
 server:
   - 'clean:build'
   - 'clean:dist'
-  - 'jshint'
+#  - 'jshint'
   - 'less:build'
   - 'ngtemplates:build'
   - 'express:dev'

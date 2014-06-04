@@ -7,7 +7,7 @@ module.exports =
       '<%=files.public.js.src%>'
       '<%=files.build.dir%>/templates/template.js'
     ]
-    tasks: ['newer:jshint:public']
+    tasks: []
     options:
       livereload: true
   less:
@@ -31,7 +31,7 @@ module.exports =
     files: [
       '<%=files.server.js.src%>'
     ]
-    tasks: ['newer:jshint:server', 'express:dev', 'wait']
+    tasks: ['express:dev', 'wait']
     options:
       livereload: true
       nospawn: true

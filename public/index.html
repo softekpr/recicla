@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
         <title>RECICLA</title>
         <!-- build:css(public) style/vendor.css -->
         <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -19,13 +20,12 @@
     </head>
 
     <body data-ng-app="recicla">
-
         <!-- mobile menu -->
-        <ul class="nav nav-pills hidden-md hidden-lg">
-            <li class="pull-right" ng-click="openMenu()">
+        <ul id="navigation" class="nav nav-pills">
+            <li class="pull-right visible-xs visible-sm" ng-click="toggleMenu()">
                 <a href="#"><i class="fa fa-2x fa-bars"></i></a>
             </li>
-            <li class="ubuntu-font" style="margin-left: 0.5em; margin-top: 0.1em; font-size: 30px">
+            <li class="ubuntu-font visible-xs visible-sm" style="margin-left: 0.5em; margin-top: 0.1em; font-size: 30px">
                 RE<span class="logo-green text-bold">CICL</span>A
             </li>
         </ul>
@@ -47,12 +47,16 @@
         <script src="vendor/angular-strap/dist/angular-strap.tpl.js"></script>
         <script src="vendor/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
         <script src="vendor/angular-google-maps/dist/angular-google-maps.js"></script>
+        <script src="vendor/phoneformat/phoneformat.min.js"></script>
         <!-- endbuild -->
 
         <!-- build:js(public) scripts/app.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/directives/categories.js"></script>
         <script src="scripts/home/controllers/home.js"></script>
+        <script src="scripts/materials/materials_resource.js"></script>
+        <script src="scripts/locations/locations_resource.js"></script>
+        <script src="scripts/users/users_resource.js"></script>
         <!-- endbuild -->
     </body>
 </html>

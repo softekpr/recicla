@@ -6,9 +6,80 @@
             </h4>
         </div>
         <hr>
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                Mostrar demanda
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <label class="switch">
+                    <input type="checkbox" ng-model="map.heatMap.show"><i></i>
+                </label>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                Agrupar
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <label class="switch">
+                    <input type="checkbox" ng-model="cluster.cluster"><i></i>
+                </label>
+            </div>
+        </div>
+        <hr>
         <categories></categories>
     </div>
     <div class="col-md-10 col-lg-10 col-no-padding">
-        <div id="map">Mapa aqui!</div>
+        <div google-map id="map" data-center="map.center" data-zoom="map.zoom" data-draggable="true"
+             data-events="map.events" data-pan="true" data-control="map.control" data-options="map.options">
+            <marker data-coords="homeMarker.location" data-options="homeMarker.options"></marker>
+            <markers data-models="markers" data-coords="'position'" data-options="'options'" data-labelContent="'label'"
+                     data-labelClass="sb-marker-label" data-doCluster="cluster.cluster"
+                     data-clusterOptions="cluster.clusterOpts" data-click="'doClick'"></markers>
+            <layer data-namespace="visualization" data-type="HeatmapLayer" data-show="map.heatMap.show"
+                   data-onCreated="map.heatMap.callback" data-options="map.heatMap.options"></layer>
+        </div>
+        <div class="at-the-bottom" ng-show="selectedMarker">
+            <div class="map-bottom-overlay div-center text-center">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="ubuntu-font">{{selectedMarker.location.name}}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <div class="row text-left">
+                            <div class="col-sm-12"
+                                 data-ng-repeat="addrPart in selectedMarker.location.address.street | split:','">
+                                {{ addrPart }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ selectedMarker.location.address.city }}, PR
+                            </div>
+                            <div class="col-sm-12">
+                                {{ selectedMarker.location.phone.number | tel}} <span
+                                    data-ng-show="selectedMarker.location.phone.extension">x {{selectedMarker.location.phone.extension}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a href="http://maps.google.com/?saddr={{initialLocation.lat()}},{{initialLocation.lng()}}&daddr={{selectedMarker.position.latitude}},{{selectedMarker.position.longitude}}"
+                                   class="btn btn-primary" target="_blank">&iquest;C&oacute;mo llego?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span data-ng-repeat="category in selectedMarker.location.materials">
+                            <span data-ng-show="!$first">, </span>(<i data-ng-class="category.cssClass"></i>) - {{ category.name }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
