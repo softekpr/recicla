@@ -3,26 +3,11 @@
 
     var express = require('express'),
         path = require('path'),
-        fs = require('fs'),
         logging = require(path.join(__dirname, './lib/express/logging')),
         mongoose = require('mongoose'),
         configuration = require(path.join(__dirname, './lib/configuration'));
 
-    // Declare all the modules for Rest....
-    var categoryController = require('./lib/controllers/categories.js');
-    var materialController = require('./lib/controllers/materials.js');
-    var locationController = require('./lib/controllers/locations.js');
-    var userController = require('./lib/controllers/users.js');
-
     mongoose.connect(configuration.get('mongo:uri'));
-
-    var modelsPath = path.join(__dirname, './lib/models');
-
-    fs.readdirSync(modelsPath).forEach(function(file) {
-        if (/(.*)\.(js$|coffee$)/.test(file)) {
-            require(modelsPath + '/' + file);
-        }
-    });
 
     var app = express();
 
@@ -38,16 +23,9 @@
         app.use(express.bodyParser());
         logging(app);
 
-        // Get all categories
-        app.get('/api/categories', categoryController.getCategories );
+        var Router = require('./lib/router');
 
-        // Get all materials
-        app.get('/api/materials', materialController.getMaterials );
-
-        // Get all locations
-        app.post('/api/locations', locationController.getLocations );
-
-        app.post('/api/users', userController.getUsers );
+        Router.configure(app);
 
         app.get('*', function(request, response) {
             response.sendfile(path.join(__dirname, '../public/index.html'));

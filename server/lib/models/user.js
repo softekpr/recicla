@@ -2,9 +2,6 @@
     'use strict';
 
     var mongoose = require('mongoose'),
-        path = require('path'),
-        fs = require('fs'),
-        configuration = require('../configuration/'),
         Schema = mongoose.Schema;
 
     var schema = new Schema({
@@ -17,10 +14,16 @@
             index: '2d'
         },
         materials: [{type: Schema.Types.ObjectId, required: true, ref: 'Material'}],
-        timestamp: {type: Date, required: true, default: Date.now}
+        timestamp: {type: Date, default: Date.now}
     });
 
     var User = mongoose.model('User', schema);
 
-    module.export = mongoose.model('User', User);
+    User.remove({}, function(err) {
+        if(err) {
+            console.log(err);
+        }
+    });
+
+    module.exports = User;
 })();
