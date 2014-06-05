@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('recicla')
-        .controller('HomeController', function ($scope, $rootScope, $window, $resource, $timeout, geolocation, filterFilter, Material, Location, User) {
+        .controller('HomeController', ['$scope', '$rootScope', '$window', '$resource', '$timeout', 'geolocation', 'filterFilter', 'Material', 'Location', 'User', function ($scope, $rootScope, $window, $resource, $timeout, geolocation, filterFilter, Material, Location, User) {
             var directionsDisplayOpts = {preserveViewport: true, draggable: true, suppressMarkers: true};
             var directionsService = new google.maps.DirectionsService();
             var selectedMarker;
@@ -151,7 +151,7 @@
             }
 
             function refreshMapData(categories) {
-                if($scope.directionsDisplay) {
+                if ($scope.directionsDisplay) {
                     $scope.directionsDisplay.setMap(null);
                     $scope.directionsDisplay = new google.maps.DirectionsRenderer(directionsDisplayOpts);
                     $scope.directionsDisplay.setMap($scope.map.control.getGMap());
@@ -197,11 +197,11 @@
                     });
                 };
             };
-        })
-        .config(function ($routeProvider) {
+        }])
+        .config(['$routeProvider',function ($routeProvider) {
             $routeProvider.when('/', {
                 controller: 'HomeController',
                 templateUrl: 'scripts/home/views/home.html'
             });
-        });
+        }]);
 })();

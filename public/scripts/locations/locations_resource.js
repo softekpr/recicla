@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('recicla')
-        .factory('Location', function ($resource) {
+        .factory('Location', ['$resource', function ($resource) {
             return $resource('/api/locations', {}, {
                 fetch: {method: 'POST', isArray: true, transformResponse: function (data) {
                     var array = angular.fromJson(data);
@@ -21,5 +21,5 @@
                     });
                 }}
             });
-        });
-}());
+        }]);
+})();

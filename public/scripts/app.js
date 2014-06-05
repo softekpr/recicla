@@ -3,14 +3,14 @@
 
     var LN3 = 1.0986122886681098;
 
-    angular.module('recicla', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', 'ui.bootstrap', 'mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside', 'mgcrea.ngStrap.button', 'geolocation', 'google-maps'])
-        .config(function ($routeProvider, $locationProvider) {
+    angular.module('recicla', ['ngRoute', 'ngResource', 'ngSanitize', 'ngAnimate', 'mgcrea.ngStrap', 'mgcrea.ngStrap.aside', 'mgcrea.ngStrap.button', 'geolocation', 'google-maps'])
+        .config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
 
             $routeProvider.otherwise({
                 redirectTo: '/'
             });
-        })
+        }])
         .filter('tel', function () {
             var format = function(phoneNumber) {
                 return '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3, 6) + '-' + phoneNumber.substring(6);
@@ -33,15 +33,17 @@
                 return string.split(separator);
             };
         })
-        .run(function ($rootScope, $aside) {
-            $rootScope.mobileMenu = $aside({
-                scope: $rootScope,
-                title: 'Categor\u00EDas',
-                template: 'scripts/templates/aside.html',
-                contentTemplate: 'scripts/templates/menu.html',
-                show: false,
-                placement: 'right',
-                animation: 'am-slide-right'
+        .run(['$rootScope','$aside', function ($rootScope, $aside) {
+            $rootScope.$evalAsync(function() {
+                $rootScope.mobileMenu = $aside({
+                    scope: $rootScope,
+                    title: 'Categor\u00EDas',
+                    template: 'scripts/templates/aside.html',
+                    contentTemplate: 'scripts/templates/menu.html',
+                    show: false,
+                    placement: 'right',
+                    animation: 'am-slide-right'
+                });
             });
 
             $rootScope.cluster = {
@@ -64,9 +66,5 @@
                     $rootScope.mobileMenu.show();
                 });
             };
-
-            $rootScope.$watch('categories', function (/*newValue, oldValue*/) {
-                console.log('categories changed!');
-            }, true);
-        });
-}());
+        }]);
+})();
