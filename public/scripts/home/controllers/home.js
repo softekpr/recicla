@@ -2,11 +2,30 @@
     'use strict';
 
     angular.module('recicla')
-        .controller('HomeController', ['$scope', '$rootScope', '$window', '$resource', '$timeout', 'geolocation', 'filterFilter', 'Material', 'Location', 'User', function ($scope, $rootScope, $window, $resource, $timeout, geolocation, filterFilter, Material, Location, User) {
+        .controller('HomeController', ['$scope', '$rootScope', '$window', '$resource', '$timeout', '$aside', 'geolocation', 'filterFilter', 'Material', 'Location', 'User', function ($scope, $rootScope, $window, $resource, $timeout, $aside, geolocation, filterFilter, Material, Location, User) {
             var directionsDisplayOpts = {preserveViewport: true, draggable: true, suppressMarkers: true};
             var directionsService = new google.maps.DirectionsService();
             var selectedMarker;
             var heatMapLayer;
+
+            $scope.$evalAsync(function() {
+                $scope.mobileMenu = $aside({
+                    scope: $rootScope,
+                    title: 'Categor\u00EDas',
+                    template: 'scripts/templates/aside.html',
+                    contentTemplate: 'scripts/templates/menu.html',
+                    show: false,
+                    placement: 'right',
+                    animation: 'am-slide-right'
+                });
+            });
+
+
+            $scope.openMenu = function () {
+                $scope.mobileMenu.$promise.then(function () {
+                    $scope.mobileMenu.show();
+                });
+            };
 
             function fetchGeolocation() {
                 geolocation.getLocation({maximumAge: Infinity}).then(function (position) {
@@ -53,7 +72,7 @@
                     latitude: 18.2591478,
                     longitude: -66.4380706
                 },
-                zoom: 10,
+                zoom: 9,
                 events: {
                     /*jshint camelcase: false */
                     bounds_changed: function () {
