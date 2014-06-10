@@ -8,10 +8,25 @@
             var selectedMarker;
             var heatMapLayer;
 
+            $scope.allSelected = false;
+
+            $scope.$watch('allSelected', function(newValue) {
+                console.log('allSelected new value: ' + newValue);
+                angular.forEach($scope.categories, function(category) {
+                    if (category.name != 'Neumáticos') {
+                        category.selected = $scope.allSelected;
+                    }
+                });
+            }, true);
+
+            $scope.toggleAllSelected = function() {
+                $scope.allSelected = !$scope.allSelected;
+            };
+
             $scope.$evalAsync(function() {
                 $scope.mobileMenu = $aside({
-                    scope: $rootScope,
-                    title: 'Categor\u00EDas',
+                    scope: $scope,
+                    title: 'Materiales',
                     template: 'scripts/templates/aside.html',
                     contentTemplate: 'scripts/templates/menu.html',
                     show: false,
@@ -19,7 +34,6 @@
                     animation: 'am-slide-right'
                 });
             });
-
 
             $scope.openMenu = function () {
                 $scope.mobileMenu.$promise.then(function () {

@@ -37,6 +37,17 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+                    Todos (excl. Neumáticos)
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-4 col-lg-4">
+                    <label class="switch">
+                        <input type="checkbox" ng-model="allSelected"><i></i>
+                    </label>
+                </div>
+            </div>
+            <hr>
             <categories></categories>
         </div>
         <div class="col-md-10 col-lg-10 col-no-padding">
@@ -55,7 +66,7 @@
                         <div class="col-sm-12">
                             <h3 class="ubuntu-font">
                                 {{selectedMarker.location.name}}
-                                <small class="pull-right close" ng-click="showInfoPanel = false">&times;</small>
+                                <small class="close" ng-click="showInfoPanel = false">&times;</small>
                             </h3>
                         </div>
                     </div>
