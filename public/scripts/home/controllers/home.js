@@ -13,7 +13,7 @@
             $scope.$watch('allSelected', function(newValue) {
                 console.log('allSelected new value: ' + newValue);
                 angular.forEach($scope.categories, function(category) {
-                    if (category.name != 'Neumáticos') {
+                    if (category.name !== 'Neumáticos') {
                         category.selected = $scope.allSelected;
                     }
                 });
