@@ -11,7 +11,7 @@
         console.log(__dirname);
 
         var environment = nconf.get('NODE:ENV') || 'development';
-        nconf.file(environment, path.join(__dirname,'/development.json'));
+        nconf.file(environment, path.join(__dirname,'/'+environment+'.json'));
         nconf.file('default', path.join('./development.json'));
     };
 
@@ -19,5 +19,8 @@
         return nconf.get(key);
     };
 
-    module.exports = new Configuration();
+    var conf = new Configuration()
+
+    console.log(conf.get('morgan'));
+    module.exports = conf;
 })();

@@ -4,6 +4,7 @@
     var mongoose = require('mongoose'),
         path = require('path'),
         loader = require('../data'),
+        configuration = require('../configuration'),
         Schema = mongoose.Schema;
 
     var schema = new Schema({
@@ -13,13 +14,15 @@
 
     var Category = mongoose.model('Category', schema);
 
-    Category.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            loader(path.join(__dirname, '../data/category.json'), Category);
-        }
-    });
+    if(configuration.get('NODE:ENV') === 'development') {
+        Category.remove({}, function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                loader(path.join(__dirname, '../data/category.json'), Category);
+            }
+        });
+    }
 
     module.exports = Category;
 })();

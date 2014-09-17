@@ -11,11 +11,12 @@
 
     var app = express();
 
-    //this is needed only on dev environment
-    //also avoid hard coding the value
-    app.use(require('connect-livereload')({
-        port: configuration.get('livereload:port')
-    }));
+    console.log(configuration.get('NODE:ENV'));
+    if(configuration.get('NODE:ENV') === 'development') {
+        app.use(require('connect-livereload')({
+            port: configuration.get('livereload:port')
+        }));
+    }
 
     app.configure(function() {
         app.use(express.static(path.join(__dirname, '../build')));

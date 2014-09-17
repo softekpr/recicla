@@ -4,6 +4,7 @@
     var mongoose = require('mongoose'),
         Material = require('./material'),
         Category = require('./category'),
+        configuration = require('../configuration'),
         Schema = mongoose.Schema,
         fs = require('fs'),
         path = require('path');
@@ -61,13 +62,15 @@
 
     var Location = mongoose.model('Location', schema);
 
-    Location.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            loader(path.join(__dirname, '../data/location.json'), Location);
-        }
-    });
+    if(configuration.get('NODE:ENV') === 'development') {
+        Location.remove({}, function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                loader(path.join(__dirname, '../data/location.json'), Location);
+            }
+        });
+    }
 
     module.exports = Location;
 })();

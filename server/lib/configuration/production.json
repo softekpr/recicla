@@ -1,0 +1,9 @@
+{
+    "morgan": "prod",
+    "express": {
+        "port": 8080
+    },
+    "mongo": {
+        "uri": "mongodb://localhost/recicla"
+    }
+}
